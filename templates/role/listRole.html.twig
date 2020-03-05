@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello RoleController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h2>Benvingut {{controller_name}} ! <span style="color:orangered">{{ user_role }}</span>😉</h2>
+
+    Espia de com obtenir de diferents maneres l'usuari logged actual:<br/>
+    You are logged in as {{ app.user.username }}, 🚪 <a href="{{ path('app_logout') }}">Logout</a>
+
+
+        <div class="container">
+        <hr/>
+        <h3>Lista de usuarios</h3>
+        <ul>
+        {% for user in users_list %} 
+            <li>{{ user.email }} (
+                {% for role in user.roles %} 
+                    {{role}}  
+                {% endfor %}
+            )</li>
+        {% endfor %} 
+        </ul>
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}
